@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+	$Id: block.cqb 41751 2012-09-18 11:55:06Z kinnen $
+	$Rev: 41751 $
+	@ConQAT.Rating RED Hash: abc
+-->
+<conqat xmlns="http://conqat.cs.tum.edu/ns/config">
+   <block-spec name="LinesOfCode">
+      <block name="token-file-scope" spec="org.conqat.engine.sourcecode.resource.TokenFileScope">
+         <project name="Java8Functional"/>
+         <root dir="D:\LunaWorkspace\Java8Functional\src"/>
+         <language name="JAVA"/>
+         <include pattern="**/*.java"/>
+      </block>
+      <processor class="org.conqat.engine.resource.analysis.LOCAnalyzer" name="loc-analyzer">
+         <input ref="@token-file-scope.result"/>
+      </processor>
+      <processor class="org.conqat.engine.html_presentation.layouters.TableLayouter" name="table-layouter">
+         <input ref="@sum-aggregator"/>
+         <info name="LOC"/>
+      </processor>
+      <processor class="org.conqat.engine.commons.aggregation.SumAggregator" name="sum-aggregator">
+         <read key="LoC"/>
+         <input ref="@loc-analyzer"/>
+      </processor>
+      <processor class="org.conqat.engine.html_presentation.HTMLPresentation" name="presentation">
+         <result ref="@table-layouter"/>
+         <output dir="D:\LunaWorkspace\Java8Functional\output"/>
+         <project title="My POC - Getting started with ConQAT"/>
+      </processor>
+   </block-spec>
+   <meta type="cq.edit">
+      <entries namespace="token-file-scope">
+         <entry key="pos" value="144,48"/>
+      </entries>
+      <entries namespace="loc-analyzer">
+         <entry key="pos" value="144,133"/>
+      </entries>
+      <entries namespace="table-layouter">
+         <entry key="pos" value="144,303"/>
+      </entries>
+      <entries namespace="sum-aggregator">
+         <entry key="pos" value="144,218"/>
+      </entries>
+      <entries namespace="presentation">
+         <entry key="pos" value="144,384"/>
+      </entries>
+   </meta>
+</conqat>
