@@ -1,0 +1,4 @@
+https://www.cqse.eu/en/products/conqat/tutorials-documentation/
+http://amr-noaman.blogspot.sg/2013/04/detect-exact-and-similar-code.html
+http://scn.sap.com/community/abap/blog/2015/02/17/static-abap-code-analysis-using-conqat-and-of-course-sci
+http://amr-noaman.blogspot.sg/2014/10/integrating-jenkins-and-conqat.html
